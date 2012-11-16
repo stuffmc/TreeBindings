@@ -8,6 +8,11 @@
 
 #import "AppDelegate.h"
 
+@interface AppDelegate ()
+@property (weak) IBOutlet NSOutlineView *outlineView;
+
+@end
+
 @implementation AppDelegate
 
 @synthesize persistentStoreCoordinator = _persistentStoreCoordinator;
@@ -16,7 +21,15 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
-    // Insert code here to initialize your application
+}
+
+- (IBAction)expand:(id)sender {
+    [_outlineView expandItem:[_outlineView itemAtRow:0] expandChildren:YES];
+}
+
+- (void)windowDidBecomeKey:(NSNotification *)notification
+{
+    [_outlineView expandItem:[_outlineView itemAtRow:0] expandChildren:YES];
 }
 
 // Returns the directory the application uses to store the Core Data store file. This code uses a directory named "biz.pomcast.TreeBindings" in the user's Application Support directory.
